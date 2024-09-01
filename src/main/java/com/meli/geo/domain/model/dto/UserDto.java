@@ -14,6 +14,11 @@ public class UserDto {
     private Long id;
     private String ipUser;
     private Integer distance;
-    private Long countryId;
-    private CountryDto countryName;
+    private CountryDto country;
+
+    public UserDto(String ip, Integer distance, CountryDto response) {
+        this.ipUser = ip;
+        this.distance = distance;
+        this.country = response;
+    }
 }

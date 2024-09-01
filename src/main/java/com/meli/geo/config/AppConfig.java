@@ -34,6 +34,11 @@ public class AppConfig {
     }
 
     @Bean
+    public TimeZoneDtoMapper timeZoneDtoMapper() {
+        return Mappers.getMapper(TimeZoneDtoMapper.class);
+    }
+
+    @Bean
     public RestCountryDtoMapper restCountryDtoMapper() {
         return Mappers.getMapper(RestCountryDtoMapper.class);
     }

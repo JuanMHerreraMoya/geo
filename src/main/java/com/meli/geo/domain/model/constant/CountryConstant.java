@@ -7,4 +7,6 @@ public class CountryConstant {
 
     public static final String URL_EXCHANGE = "https://v6.exchangerate-api.com/v6/cae262e1aec0b72ae7a4ec8f/latest/USD";
     public static final String ERROR_EXCHANGE ="Error consultando los exchande en dolares";
+    public static final String ERROR_NO_DATA ="No se puede calcular los valores porque no existen datos parar evaluar";
+
 }

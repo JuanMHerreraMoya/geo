@@ -6,13 +6,12 @@ import org.springframework.http.HttpStatus;
 
 @Getter
 @Setter
-public class GeoException  extends RuntimeException {
-
+public class ErrorResponse {
+    private String message;
     private HttpStatus status;
 
-    public GeoException(HttpStatus status, String message) {
-        super(message);
+    public ErrorResponse(String message, HttpStatus status) {
+        this.message = message;
         this.status = status;
     }
-
 }

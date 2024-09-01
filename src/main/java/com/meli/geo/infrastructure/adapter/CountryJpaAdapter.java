@@ -11,6 +11,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Objects;
 
 @Service
@@ -33,11 +34,27 @@ public class CountryJpaAdapter implements CountryPersistencePort {
     }
 
     @Override
-    public void save(CountryDto countryToSave) {
+    public CountryDto save(CountryDto countryToSave) {
         try {
-            countryRepository.save(countryDtoMapper.toEntity(countryToSave));
+            return countryDtoMapper.toDto(countryRepository.save(countryDtoMapper.toEntity(countryToSave)));
         }catch (Exception e){
             throw new GeoException(HttpStatus.INTERNAL_SERVER_ERROR,String.format(CountryConstant.COUNTRY_NOT_SAVED, countryToSave.getName()));
         }
+    }
+
+    @Override
+    public List<CountryDto> getAll() {
+        return countryRepository.findAll().stream().map(countryDtoMapper::toDto).toList();
+    }
+
+    @Override
+    public Object[] getMax() {
+
+        return countryRepository.getMax();
+    }
+
+    @Override
+    public Object[] getMin() {
+        return countryRepository.getMin();
     }
 }

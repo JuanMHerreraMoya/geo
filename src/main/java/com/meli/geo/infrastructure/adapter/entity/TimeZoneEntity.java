@@ -1,24 +1,25 @@
 package com.meli.geo.infrastructure.adapter.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity(name = "UserIp")
+import java.util.Date;
+import java.util.Set;
+@Entity(name = "TimeZone")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class UserEntity {
+public class TimeZoneEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String ipUser;
-    private Integer distance;
-    @ManyToOne
-    @JoinColumn(name = "country_id")
-    private CountryEntity country;
+    private String utc;
+    private Date utcDate;
+    private Date lastUpdate;
+    @ManyToMany(mappedBy = "timeZone",cascade = CascadeType.ALL)
+    private Set<CountryEntity> countries;
 }

@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.Set;
 
 @Entity(name="Country")
@@ -24,10 +25,6 @@ public class CountryEntity {
     private Integer invocation;
     private String currency;
 
-    @OneToMany(mappedBy = "countryEntity")
-    @JsonManagedReference
-    private Set<UserEntity> userEntities;
-
     @ManyToMany
     @JoinTable(
             name = "country_language", // Nombre de la tabla intermedia
@@ -35,4 +32,16 @@ public class CountryEntity {
             inverseJoinColumns = @JoinColumn(name = "language_id") // Clave foránea hacia la tabla Language
     )
     private Set<LanguagesEntity> languages;
+
+
+    @ManyToMany
+    @JoinTable(
+            name = "country_timezones", // Nombre de la tabla intermedia
+            joinColumns = @JoinColumn(name = "country_id"), // Clave foránea hacia la tabla Country
+            inverseJoinColumns = @JoinColumn(name = "timeZone_id") // Clave foránea hacia la tabla Language
+    )
+    private Set<TimeZoneEntity> timeZone;
+
+    @OneToMany(mappedBy = "country", cascade = CascadeType.ALL)
+    private List<UserEntity> user;
 }

@@ -12,11 +12,12 @@ public interface CountryDtoMapper {
     //CountryDtoMapper INSTANCE = Mappers.getMapper(CountryDtoMapper.class);
 
     @Mapping(target = "usdExchange", ignore = true)
-    @Mapping(target = "timeList", ignore = true)
     @Mapping(source = "languages", target = "languageNames")
+    @Mapping(source = "timeZone", target = "timezone")
     CountryDto toDto(CountryEntity countryEntity);
 
     @Mapping(source = "languageNames", target = "languages")
+    @Mapping(source = "timezone", target = "timeZone")
     CountryEntity toEntity(CountryDto countryDto);
 }
 
