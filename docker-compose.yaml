@@ -9,5 +9,26 @@ services:
       POSTGRES_DB: geo
     ports:
       - "5432:5432"
+    networks:
+      - mynetwork
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: geo:latest
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/geo
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    networks:
+      - mynetwork
+networks:
+  mynetwork:
+    driver: bridge
+
 volumes:
   postgres_data:
