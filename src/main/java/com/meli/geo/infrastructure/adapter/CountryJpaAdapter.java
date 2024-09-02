@@ -1,18 +1,17 @@
 package com.meli.geo.infrastructure.adapter;
 
+import com.meli.geo.application.mapper.CountryDtoMapper;
 import com.meli.geo.domain.model.constant.CountryConstant;
 import com.meli.geo.domain.model.dto.CountryDto;
 import com.meli.geo.domain.port.CountryPersistencePort;
 import com.meli.geo.infrastructure.adapter.entity.CountryEntity;
 import com.meli.geo.infrastructure.adapter.exception.GeoException;
-import com.meli.geo.application.mapper.CountryDtoMapper;
 import com.meli.geo.infrastructure.adapter.repository.CountryRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Objects;
 
 @Service
 @Transactional

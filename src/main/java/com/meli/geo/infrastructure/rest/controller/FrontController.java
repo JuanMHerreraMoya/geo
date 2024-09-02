@@ -6,7 +6,9 @@ import com.meli.geo.domain.model.dto.CountryDto;
 import com.meli.geo.domain.model.dto.DistanceResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -14,7 +16,7 @@ import java.util.List;
 @RequestMapping("/meli/api")
 public class FrontController {
 
-    private final GeoService geoService; // Asumiendo que tienes un servicio para manejar la lógica de negocio
+    private final GeoService geoService;
     private final DistanceService distanceService;
 
     public FrontController(GeoService geoService, DistanceService distanceService) {
@@ -24,7 +26,7 @@ public class FrontController {
 
     @GetMapping("/")
     public String home() {
-        return "index"; // Muestra la página principal con el formulario
+        return "index";
     }
 
     @GetMapping("/geo")

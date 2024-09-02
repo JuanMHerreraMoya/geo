@@ -1,22 +1,20 @@
 package com.meli.geo.infrastructure.adapter.externalservices;
 
+import com.meli.geo.application.mapper.RestCountryDtoMapper;
 import com.meli.geo.domain.model.constant.CountryLanguagesConstant;
-import com.meli.geo.domain.model.dto.CountryDto;
 import com.meli.geo.domain.model.dto.RestCountriesDto;
 import com.meli.geo.domain.port.CountryLanguagesPort;
 import com.meli.geo.infrastructure.adapter.entity.RestCountriesEntity;
 import com.meli.geo.infrastructure.adapter.exception.GeoException;
-import com.meli.geo.application.mapper.RestCountryDtoMapper;
 import org.json.JSONObject;
-
-import java.util.Map;
-import java.util.Scanner;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
 
 @Component
 public class CountryLanguages implements CountryLanguagesPort {

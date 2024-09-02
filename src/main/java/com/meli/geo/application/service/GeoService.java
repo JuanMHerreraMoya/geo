@@ -9,10 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -127,7 +125,7 @@ public class GeoService implements GeoUseCase {
                 TimezoneDto timezoneDtoToSave = new TimezoneDto(o.toString(),Set.of(countryToSave.getName()),convertZoneDto(o.toString()),new Date());
                 response.add(timeZonePersistentPort.save(timezoneDtoToSave));
             } else if (Objects.nonNull(o) && timeNameList.contains(o.toString())) {
-                //hacer que coja cada timezone y lo actualice
+
                 TimezoneDto timezoneDtoDb = timezoneDtoList.stream().filter(timezoneDto -> timezoneDto.getUtc().equals(o.toString())).toList().getFirst();
                 List<String> countriesExistentOnTimeZones = getCountryName(timezoneDtoDb.getCountryNames(),countryToSave.getName());
                 timezoneDtoDb.setCountryNames(Set.of(countryToSave.getName()));
@@ -163,18 +161,6 @@ public class GeoService implements GeoUseCase {
             }
         });
         return response;
-    }
-
-    private List<String> convertZone(Set<TimezoneDto> timeZones) {
-        List<String> horas = new ArrayList<>();
-        timeZones.forEach(o -> {
-            ZoneId zoneId = ZoneId.of(o.getUtc());
-            ZonedDateTime zonedDateTime = ZonedDateTime.now(zoneId);
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss z");
-            String formattedDateTime = zonedDateTime.format(formatter);
-            horas.add(formattedDateTime);
-        });
-        return horas;
     }
 
     private String convertZoneDto(String utc){

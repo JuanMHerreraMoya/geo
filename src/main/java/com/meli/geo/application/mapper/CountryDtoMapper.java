@@ -9,8 +9,6 @@ import org.mapstruct.Mapping;
 @Mapper
 public interface CountryDtoMapper {
 
-    //CountryDtoMapper INSTANCE = Mappers.getMapper(CountryDtoMapper.class);
-
     @Mapping(target = "usdExchange", ignore = true)
     @Mapping(source = "languages", target = "languageNames")
     @Mapping(source = "timeZone", target = "timezone")

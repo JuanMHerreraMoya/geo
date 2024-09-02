@@ -1,11 +1,8 @@
 package com.meli.geo.infrastructure.adapter;
 
-import com.meli.geo.application.mapper.CountryDtoMapper;
 import com.meli.geo.application.mapper.TimeZoneDtoMapper;
-import com.meli.geo.domain.model.dto.CountryDto;
 import com.meli.geo.domain.model.dto.TimezoneDto;
 import com.meli.geo.domain.port.TimeZonePersistentPort;
-import com.meli.geo.infrastructure.adapter.entity.TimeZoneEntity;
 import com.meli.geo.infrastructure.adapter.repository.TimeZoneRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
