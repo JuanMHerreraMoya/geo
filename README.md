@@ -1,6 +1,4 @@
-# Nombre del Proyecto
-
-Breve descripción del proyecto. Por ejemplo:
+# Geo App
 
 Este proyecto es una API RESTful que permite realizar operaciones geográficas y calcular distancias entre Buenos Aires Argetina
 ,además de gestionar información como:
