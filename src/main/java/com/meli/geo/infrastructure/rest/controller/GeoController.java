@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/geo")
+@RequestMapping("/meli/api/geologia")
 public class GeoController {
     private final GeoService geoService;
     private final DistanceService distanceService;

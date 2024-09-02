@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Geo Lookup Results</title>
+    <!-- Incluir archivo CSS externo -->
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<div class="container">
+    <h1>Geo Lookup Results</h1>
+
+    <!-- Mostrar CountryDto -->
+    <div>
+        <h2>Country Information</h2>
+        <p><strong>Name:</strong> <span th:text="${country.name}">Country Name</span></p>
+        <p><strong>ISO:</strong> <span th:text="${country.iso}">ISO Code</span></p>
+        <p><strong>Currency:</strong> <span th:text="${country.currency}">Currency</span></p>
+        <p><strong>USD Exchange:</strong> <span th:text="${country.usdExchange}">USD Exchange</span></p>
+        <p><strong>Distance:</strong> <span th:text="${country.distance}">Distance</span></p>
+        <p><strong>Invocation:</strong> <span th:text="${country.invocation}">Invocation</span></p>
+
+        <!-- Mostrar Languages -->
+        <h3>Languages</h3>
+        <ul>
+            <li th:each="language : ${country.languageNames}" th:text="${language.name}">Language</li>
+        </ul>
+
+        <!-- Mostrar Timezones -->
+        <h3>Timezones</h3>
+        <table>
+            <thead>
+            <tr>
+                <th>UTC</th>
+                <th>Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="timezone : ${country.timezone}">
+                <td th:text="${timezone.utc}">UTC</td>
+                <td th:text="${timezone.utcDate}">Date</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Mostrar lista de DistanceResponse -->
+    <div>
+        <h2>Distance Information</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Country</th>
+                <th>Distance</th>
+                <th>Invocations</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="distance : ${distances}">
+                <td th:text="${distance.titulo}">Title</td>
+                <td th:text="${distance.pais}">Country</td>
+                <td th:text="${distance.distancia}">Distance</td>
+                <td th:text="${distance.invocaciones}">Invocations</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

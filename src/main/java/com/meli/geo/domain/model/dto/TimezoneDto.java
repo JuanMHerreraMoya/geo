@@ -18,12 +18,12 @@ public class TimezoneDto {
     @JsonIgnore
     private Long id;
     private String utc;
-    private Date utcDate;
+    private String utcDate;
     private Date lastUpdate;
     @JsonIgnore
     private Set<String> countryNames;
 
-    public TimezoneDto(String utc, Set<String> countryNames, Date utcDate, Date lastUpdate){
+    public TimezoneDto(String utc, Set<String> countryNames, String utcDate, Date lastUpdate){
         this.countryNames = countryNames;
         this.utc = utc;
         this.utcDate = utcDate;

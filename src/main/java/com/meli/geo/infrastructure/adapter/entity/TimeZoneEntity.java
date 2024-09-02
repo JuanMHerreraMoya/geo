@@ -18,7 +18,7 @@ public class TimeZoneEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String utc;
-    private Date utcDate;
+    private String utcDate;
     private Date lastUpdate;
     @ManyToMany(mappedBy = "timeZone",cascade = CascadeType.ALL)
     private Set<CountryEntity> countries;
